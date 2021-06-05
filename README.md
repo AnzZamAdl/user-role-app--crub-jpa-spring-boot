@@ -11,3 +11,6 @@ Use Relational Database and Create following tables and their association mappin
 4. Include basic security. 
 5. Test cases:  Include Junit Test cases for all the layers. Build:  Create the Maven configuration to bundle as a Jar.
 
+
+Note: For basic authentication use username: username password: password
+
