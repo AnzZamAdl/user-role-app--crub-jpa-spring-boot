@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/AnzZamAdl/user-role-app--crub-jpa-spring-boot.git'
+                git branch: 'main', url: 'https://github.com/AnzZamAdl/user-role-app--crub-jpa-spring-boot.git'
             }
         }
 
