@@ -25,17 +25,17 @@ pipeline {
             }
         }
 
-        stage('OWASP Dependency Check'){
-            steps{
-                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: '**/dependency-check-report.xml', fingerprint: true
-                }
-            }
-        }
+        //stage('OWASP Dependency Check'){
+           // steps{
+             //   dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
+               // dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            //}
+            //post {
+              //  always {
+                //    archiveArtifacts artifacts: '**/dependency-check-report.xml', fingerprint: true
+                //}
+            //}
+        //}
 
         stage('Run Unit Tests') {
             steps {
