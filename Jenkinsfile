@@ -46,7 +46,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-login') {
+                    withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker') {
                         sh """
                             docker build -t ${DOCKER_IMAGE} .
                             docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:latest
@@ -62,7 +62,7 @@ pipeline {
                 script {
                     sh "docker stop ${DOCKER_CONTAINER} || true"
                     sh "docker rm ${DOCKER_CONTAINER} || true"
-                    withDockerRegistry(credentialsId: 'docker-login') {
+                    withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker') {
                         sh """
                             docker run -d --name ${DOCKER_CONTAINER} -p ${DOCKER_PORT}:8080 ${DOCKER_IMAGE}:latest
                         """
