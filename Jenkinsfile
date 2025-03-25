@@ -65,7 +65,7 @@ pipeline {
                     sh "docker rm ${CONTAINER_NAME} || true"
                     withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker') {
                         sh """
-                            docker run -d --name ${CONTAINER_NAME} -p ${DOCKER_PORT}:8080 ${IMAGE_NAME}:latest
+                            docker run -d --name ${CONTAINER_NAME} -p ${DOCKER_PORT}:8081 ${IMAGE_NAME}:latest
                         """
                     }
                 }
