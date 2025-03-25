@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy JAR file from target directory
-COPY target/user-role-app-0.0.1-SNAPSHOT.jar app.jar
+COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose port 8081
 EXPOSE 8081
