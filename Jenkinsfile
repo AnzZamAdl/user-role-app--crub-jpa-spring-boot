@@ -7,7 +7,7 @@ pipeline {
     }
   
     environment {
-        IMAGE_NAME = 'user-role-app'
+        IMAGE_NAME = 'anzzamadl/user-role-app'
         CONTAINER_NAME = 'user-role-app-container'
         DOCKER_PORT = '8081'
     }
