@@ -48,9 +48,9 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker') {
                         sh """
-                            docker build -t ${DOCKER_IMAGE} .
-                            docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:latest
-                            docker push ${DOCKER_IMAGE}:latest
+                            docker build -t ${IMAGE_NAME} .
+                            docker tag ${IMAGE_NAME} ${IMAGE_NAME}:latest
+                            docker push ${IMAGE_NAME}:latest
                         """
                     }
                 }
@@ -60,11 +60,11 @@ pipeline {
         stage('Deploy to Container') {
             steps {
                 script {
-                    sh "docker stop ${DOCKER_CONTAINER} || true"
-                    sh "docker rm ${DOCKER_CONTAINER} || true"
+                    sh "docker stop ${CONTAINER_NAME} || true"
+                    sh "docker rm ${CONTAINER_NAME} || true"
                     withDockerRegistry(credentialsId: 'docker-login', toolName: 'docker') {
                         sh """
-                            docker run -d --name ${DOCKER_CONTAINER} -p ${DOCKER_PORT}:8080 ${DOCKER_IMAGE}:latest
+                            docker run -d --name ${CONTAINER_NAME} -p ${DOCKER_PORT}:8080 ${IMAGE_NAME}:latest
                         """
                     }
                 }
